@@ -10,4 +10,19 @@ target 'TechChallenge' do
   platform :ios, '10.0'
 
   sharedpods
+
+  #Unit Test Target
+  target 'TechChallengeTests' do
+    use_frameworks!
+    inherit! :search_paths
+    sharedpods
+  end
+
+  #UI Test Target
+    target 'TechChallengeUITests' do
+    use_frameworks!
+    inherit! :search_paths
+    sharedpods
+  end
+
 end
