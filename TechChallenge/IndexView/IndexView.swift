@@ -11,8 +11,11 @@ import UIKit
 
 public class IndexView: TableView<IndexViewModel> {
 
-  public override func setup() {
-    super.setup()
-    self.viewModel = IndexViewModel()
+  public init(viewModel: IndexViewModel = IndexViewModel()) {
+    super.init()
+  }
+
+  public required init?(coder aDecoder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
   }
 }

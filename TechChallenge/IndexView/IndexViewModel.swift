@@ -12,6 +12,7 @@ public class IndexViewModel: TableViewModel {
   public var objects: [TableViewCellViewModel]
 
   public init() {
+    dataLoader().getDeliveries(offset: 0, limit: 10)
     objects = [DeliveryCellViewModel(),
                DeliveryCellViewModel(),
                DeliveryCellViewModel()]
