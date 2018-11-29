@@ -11,12 +11,14 @@
 		1D51A8FF6A74135C6AF00172 /* Pods_TechChallengeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7ECAA86C3C72A6476E14F108 /* Pods_TechChallengeTests.framework */; };
 		93C2FF9F077C3697A1EF7CE3 /* Pods_TechChallengeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F917B34FB2470C064B8822A /* Pods_TechChallengeUITests.framework */; };
 		BD351D2421AF95FD00B67054 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD351D2321AF95FD00B67054 /* AppDelegate.swift */; };
-		BD351D2621AF95FD00B67054 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD351D2521AF95FD00B67054 /* ViewController.swift */; };
+		BD351D2621AF95FD00B67054 /* IndexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD351D2521AF95FD00B67054 /* IndexViewController.swift */; };
 		BD351D2B21AF95FE00B67054 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD351D2A21AF95FE00B67054 /* Assets.xcassets */; };
 		BD351D2E21AF95FE00B67054 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD351D2C21AF95FE00B67054 /* LaunchScreen.storyboard */; };
 		BD351D3921AF95FE00B67054 /* TechChallengeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD351D3821AF95FE00B67054 /* TechChallengeTests.swift */; };
 		BD351D4421AF95FE00B67054 /* TechChallengeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD351D4321AF95FE00B67054 /* TechChallengeUITests.swift */; };
-		BD351D5921AF9AF500B67054 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = BD351D5821AF9AF500B67054 /* Podfile */; };
+		BD9D126921AF9CDE0017B423 /* Podfile.lock in Resources */ = {isa = PBXBuildFile; fileRef = BD9D126821AF9CDE0017B423 /* Podfile.lock */; };
+		BD9D126B21AF9CE80017B423 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = BD9D126A21AF9CE80017B423 /* .gitignore */; };
+		BD9D126D21AF9D0A0017B423 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9D126C21AF9D0A0017B423 /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,7 +49,7 @@
 		9D59CA1B753ECF7ECCA9863E /* Pods_TechChallenge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TechChallenge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD351D2021AF95FD00B67054 /* TechChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TechChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD351D2321AF95FD00B67054 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		BD351D2521AF95FD00B67054 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		BD351D2521AF95FD00B67054 /* IndexViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexViewController.swift; sourceTree = "<group>"; };
 		BD351D2A21AF95FE00B67054 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BD351D2D21AF95FE00B67054 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BD351D2F21AF95FE00B67054 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -57,7 +59,9 @@
 		BD351D3F21AF95FE00B67054 /* TechChallengeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TechChallengeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD351D4321AF95FE00B67054 /* TechChallengeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TechChallengeUITests.swift; sourceTree = "<group>"; };
 		BD351D4521AF95FE00B67054 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BD351D5821AF9AF500B67054 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		BD9D126821AF9CDE0017B423 /* Podfile.lock */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile.lock; sourceTree = SOURCE_ROOT; };
+		BD9D126A21AF9CE80017B423 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = SOURCE_ROOT; };
+		BD9D126C21AF9D0A0017B423 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		D5447A8A802E8CB6BC60BA43 /* Pods-TechChallengeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TechChallengeTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TechChallengeTests/Pods-TechChallengeTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -114,12 +118,12 @@
 		BD351D2221AF95FD00B67054 /* TechChallenge */ = {
 			isa = PBXGroup;
 			children = (
-				BD351D5821AF9AF500B67054 /* Podfile */,
 				BD351D2321AF95FD00B67054 /* AppDelegate.swift */,
-				BD351D2521AF95FD00B67054 /* ViewController.swift */,
+				BD9D126721AF9CC00017B423 /* Configurations */,
+				BD9D126621AF9CB60017B423 /* DetailView */,
+				BD9D126521AF9CAE0017B423 /* IndexView */,
 				BD351D2A21AF95FE00B67054 /* Assets.xcassets */,
 				BD351D2C21AF95FE00B67054 /* LaunchScreen.storyboard */,
-				BD351D2F21AF95FE00B67054 /* Info.plist */,
 			);
 			path = TechChallenge;
 			sourceTree = "<group>";
@@ -140,6 +144,32 @@
 				BD351D4521AF95FE00B67054 /* Info.plist */,
 			);
 			path = TechChallengeUITests;
+			sourceTree = "<group>";
+		};
+		BD9D126521AF9CAE0017B423 /* IndexView */ = {
+			isa = PBXGroup;
+			children = (
+				BD351D2521AF95FD00B67054 /* IndexViewController.swift */,
+			);
+			path = IndexView;
+			sourceTree = "<group>";
+		};
+		BD9D126621AF9CB60017B423 /* DetailView */ = {
+			isa = PBXGroup;
+			children = (
+				BD9D126C21AF9D0A0017B423 /* DetailViewController.swift */,
+			);
+			path = DetailView;
+			sourceTree = "<group>";
+		};
+		BD9D126721AF9CC00017B423 /* Configurations */ = {
+			isa = PBXGroup;
+			children = (
+				BD9D126A21AF9CE80017B423 /* .gitignore */,
+				BD9D126821AF9CDE0017B423 /* Podfile.lock */,
+				BD351D2F21AF95FE00B67054 /* Info.plist */,
+			);
+			path = Configurations;
 			sourceTree = "<group>";
 		};
 		EFBCAFE2A4E9A06EC3C3C612 /* Pods */ = {
@@ -275,9 +305,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD9D126B21AF9CE80017B423 /* .gitignore in Resources */,
+				BD9D126921AF9CDE0017B423 /* Podfile.lock in Resources */,
 				BD351D2E21AF95FE00B67054 /* LaunchScreen.storyboard in Resources */,
 				BD351D2B21AF95FE00B67054 /* Assets.xcassets in Resources */,
-				BD351D5921AF9AF500B67054 /* Podfile in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -437,7 +468,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BD351D2621AF95FD00B67054 /* ViewController.swift in Sources */,
+				BD9D126D21AF9D0A0017B423 /* DetailViewController.swift in Sources */,
+				BD351D2621AF95FD00B67054 /* IndexViewController.swift in Sources */,
 				BD351D2421AF95FD00B67054 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -608,7 +640,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = R52WA39X5N;
-				INFOPLIST_FILE = TechChallenge/Info.plist;
+				INFOPLIST_FILE = TechChallenge/Configurations/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -627,7 +659,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = R52WA39X5N;
-				INFOPLIST_FILE = TechChallenge/Info.plist;
+				INFOPLIST_FILE = TechChallenge/Configurations/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
