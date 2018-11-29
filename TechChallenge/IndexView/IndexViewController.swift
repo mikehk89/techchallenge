@@ -8,10 +8,14 @@
 
 import UIKit
 
-class IndexViewController: UIViewController {
+public class IndexViewController: UIViewController {
 
-  override func viewDidLoad() {
-    super.viewDidLoad()
+  public  var indexView: IndexView {
+    return self.view as! IndexView
+  }
+
+  public override func loadView() {
+    self.view = IndexView()
   }
 }
 
