@@ -7,16 +7,18 @@
 //
 
 import Foundation
+import RxSwift
 import UIKit
 
 public class TableView<ViewModel: TableViewModel>: UIView, UITableViewDataSource, UITableViewDelegate {
 
+  public let disposeBag = DisposeBag()
   public lazy var tableView: UITableView = {
     let tableView = UITableView()
     return tableView
   }()
 
-  internal var viewModel: ViewModel? {
+  public var viewModel: ViewModel? {
     didSet {
       didUpdate(viewModel: viewModel)
     }
@@ -59,14 +61,23 @@ public class TableView<ViewModel: TableViewModel>: UIView, UITableViewDataSource
     return viewModel?.objects.count ?? 0
   }
 
-  public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+  public func tableView(_ tableView: UITableView,
+                        cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
     let cell: UITableViewCell
     if let viewModel = viewModel,
       let cvm = viewModel.objects[safe: indexPath.row] {
       let reuseId = cvm.reuseIdentifier
       tableView.register(cvm.cellType, forCellReuseIdentifier: reuseId)
-      cell = tableView.dequeueReusableCell(withIdentifier: reuseId, for: indexPath)
+
+      //TODO: remove the hard
+      if let testcell = tableView.dequeueReusableCell(withIdentifier: reuseId, for: indexPath) as? DeliveryCell,
+        let dcvm = cvm as? DeliveryCellViewModel {
+        testcell.didUpdate(viewModel: dcvm)
+        cell = testcell
+      } else {
+        fatalError("Failed to dequeue")
+      }
     } else {
       fatalError("[ERROR] CVM does not exist")
     }

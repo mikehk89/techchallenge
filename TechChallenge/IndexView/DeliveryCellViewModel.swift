@@ -14,4 +14,10 @@ public class DeliveryCellViewModel: TableViewCellViewModel {
   public var cellType: UITableViewCell.Type = DeliveryCell.self
   public let height: CGFloat = 50
   public let reuseIdentifier: String = "DeliveryCell"
+
+  public let delivery: Delivery
+
+  init(delivery: Delivery) {
+    self.delivery = delivery
+  }
 }

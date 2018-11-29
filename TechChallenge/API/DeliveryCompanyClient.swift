@@ -6,9 +6,10 @@
 //  Copyright © 2018 Michael Woodruff. All rights reserved.
 //
 
-import Foundation
-import UIKit
 import Alamofire
+import Foundation
+import RxSwift
+import UIKit
 
 public class DeliveryCompanyClient: APIClient {
 
@@ -18,13 +19,37 @@ public class DeliveryCompanyClient: APIClient {
     self.domain = configuration.endpoint
   }
 
-  public func getDeliveries(offset: Int, limit: Int) {
+  public func getDeliveries(offset: Int, limit: Int) -> Observable<[Delivery]> {
 
     let kOffsetKey = "offset"
     let kLimitKey = "limit"
     let kEndpoint = "deliveries"
-    Alamofire.request("\(domain.absoluteString)/\(kEndpoint)", method: .get, parameters: [kOffsetKey: offset, kLimitKey: limit], encoding:  JSONEncoding.default).responseJSON { response in
-      print("result: \(response.result.value)")
-    }
+
+    let requestUrl = "\(self.domain.absoluteString)/\(kEndpoint)"
+    return Observable<[Delivery]>.create({ observer -> Disposable in
+      let request = Alamofire.request(requestUrl, method: .get, parameters: [kOffsetKey: offset, kLimitKey: limit], encoding:  JSONEncoding.default)
+      
+      request.responseJSON(completionHandler: { response in
+        if let dictArr = response.result.value as? [[String: Any]] {
+          var deliveries: [Delivery] = []
+          for dict in dictArr {
+            if let delivery = Delivery(dict: dict) {
+              deliveries.append(delivery)
+            }
+          }
+          observer.onNext(deliveries)
+          observer.onCompleted()
+        } else if let error = response.error {
+          //TODO
+//          observer.onError(APIError)
+        }
+      })
+
+      let disposable = Disposables.create {
+        request.cancel()
+      }
+
+      return disposable
+    })
   }
 }

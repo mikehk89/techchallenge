@@ -13,6 +13,13 @@ public class IndexView: TableView<IndexViewModel> {
 
   public init(viewModel: IndexViewModel = IndexViewModel()) {
     super.init()
+    self.viewModel = viewModel
+    viewModel.objectObs
+      .subscribe(onNext: { [weak self] _ in
+        guard let strongSelf = self else { return }
+        strongSelf.tableView.reloadData()
+      })
+      .disposed(by: disposeBag)
   }
 
   public required init?(coder aDecoder: NSCoder) {

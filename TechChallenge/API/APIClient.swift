@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import RxSwift
 
 /* Implement as many clients as you like. I.e. prod client
  * dummy data client etc */
@@ -16,5 +17,5 @@ public protocol APIClient {
 
   var domain: URL { get }
 
-  func getDeliveries(offset: Int, limit: Int)
+  func getDeliveries(offset: Int, limit: Int) -> Observable<[Delivery]>
 }

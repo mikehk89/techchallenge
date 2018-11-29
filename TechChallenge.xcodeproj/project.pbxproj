@@ -17,7 +17,7 @@
 		BD351D3921AF95FE00B67054 /* TechChallengeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD351D3821AF95FE00B67054 /* TechChallengeTests.swift */; };
 		BD351D4421AF95FE00B67054 /* TechChallengeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD351D4321AF95FE00B67054 /* TechChallengeUITests.swift */; };
 		BD52994F21AFACB80061B63B /* EnvironmentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD52994E21AFACB80061B63B /* EnvironmentManager.swift */; };
-		BD9D126921AF9CDE0017B423 /* Podfile.lock in Resources */ = {isa = PBXBuildFile; fileRef = BD9D126821AF9CDE0017B423 /* Podfile.lock */; };
+		BD52995321AFD3020061B63B /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD52995221AFD3020061B63B /* TableViewCell.swift */; };
 		BD9D126B21AF9CE80017B423 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = BD9D126A21AF9CE80017B423 /* .gitignore */; };
 		BD9D126D21AF9D0A0017B423 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9D126C21AF9D0A0017B423 /* DetailViewController.swift */; };
 		BD9D127021AF9DD20017B423 /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9D126F21AF9DD20017B423 /* TableView.swift */; };
@@ -73,7 +73,7 @@
 		BD351D4321AF95FE00B67054 /* TechChallengeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TechChallengeUITests.swift; sourceTree = "<group>"; };
 		BD351D4521AF95FE00B67054 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BD52994E21AFACB80061B63B /* EnvironmentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentManager.swift; sourceTree = "<group>"; };
-		BD9D126821AF9CDE0017B423 /* Podfile.lock */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile.lock; sourceTree = SOURCE_ROOT; };
+		BD52995221AFD3020061B63B /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		BD9D126A21AF9CE80017B423 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = SOURCE_ROOT; };
 		BD9D126C21AF9D0A0017B423 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		BD9D126F21AF9DD20017B423 /* TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableView.swift; sourceTree = "<group>"; };
@@ -199,7 +199,6 @@
 			isa = PBXGroup;
 			children = (
 				BD9D126A21AF9CE80017B423 /* .gitignore */,
-				BD9D126821AF9CDE0017B423 /* Podfile.lock */,
 				BD351D2F21AF95FE00B67054 /* Info.plist */,
 			);
 			path = Configurations;
@@ -208,6 +207,7 @@
 		BD9D126E21AF9DB80017B423 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				BD52995221AFD3020061B63B /* TableViewCell.swift */,
 				BD9D126F21AF9DD20017B423 /* TableView.swift */,
 				BD9D127321AFA0020017B423 /* TableViewModel.swift */,
 				BD9D127B21AFA4770017B423 /*  Extensions */,
@@ -377,7 +377,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				BD9D126B21AF9CE80017B423 /* .gitignore in Resources */,
-				BD9D126921AF9CDE0017B423 /* Podfile.lock in Resources */,
 				BD351D2E21AF95FE00B67054 /* LaunchScreen.storyboard in Resources */,
 				BD351D2B21AF95FE00B67054 /* Assets.xcassets in Resources */,
 			);
@@ -432,12 +431,16 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-TechChallengeTests/Pods-TechChallengeTests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -498,12 +501,16 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-TechChallengeUITests/Pods-TechChallengeUITests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -520,12 +527,16 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-TechChallenge/Pods-TechChallenge-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -553,6 +564,7 @@
 				BD9D128521AFA7060017B423 /* APIClient.swift in Sources */,
 				BD9D127621AFA12F0017B423 /* IndexViewModel.swift in Sources */,
 				BD9D128321AFA6C10017B423 /* Location.swift in Sources */,
+				BD52995321AFD3020061B63B /* TableViewCell.swift in Sources */,
 				BD9D128921AFA81C0017B423 /* APIClientConfiguration.swift in Sources */,
 				BD9D127D21AFA4830017B423 /* CollectionExtensions.swift in Sources */,
 			);

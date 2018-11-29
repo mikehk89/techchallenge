@@ -8,8 +8,14 @@
 
 import Foundation
 
-struct Location {
-  let lat: Int
-  let long: Int
-  let address: String
+public struct Location {
+  public let lat: Double?
+  public let long: Double?
+  public let address: String?
+
+  init(dict: [String: Any]) {
+    self.lat = dict["lat"] as? Double
+    self.long = dict["long"] as? Double
+    self.address = dict["address"] as? String
+  }
 }
