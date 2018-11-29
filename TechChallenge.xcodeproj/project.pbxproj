@@ -12,7 +12,6 @@
 		93C2FF9F077C3697A1EF7CE3 /* Pods_TechChallengeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F917B34FB2470C064B8822A /* Pods_TechChallengeUITests.framework */; };
 		BD351D2421AF95FD00B67054 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD351D2321AF95FD00B67054 /* AppDelegate.swift */; };
 		BD351D2621AF95FD00B67054 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD351D2521AF95FD00B67054 /* ViewController.swift */; };
-		BD351D2921AF95FD00B67054 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD351D2721AF95FD00B67054 /* Main.storyboard */; };
 		BD351D2B21AF95FE00B67054 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD351D2A21AF95FE00B67054 /* Assets.xcassets */; };
 		BD351D2E21AF95FE00B67054 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD351D2C21AF95FE00B67054 /* LaunchScreen.storyboard */; };
 		BD351D3921AF95FE00B67054 /* TechChallengeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD351D3821AF95FE00B67054 /* TechChallengeTests.swift */; };
@@ -49,7 +48,6 @@
 		BD351D2021AF95FD00B67054 /* TechChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TechChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD351D2321AF95FD00B67054 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BD351D2521AF95FD00B67054 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		BD351D2821AF95FD00B67054 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BD351D2A21AF95FE00B67054 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BD351D2D21AF95FE00B67054 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BD351D2F21AF95FE00B67054 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -59,7 +57,7 @@
 		BD351D3F21AF95FE00B67054 /* TechChallengeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TechChallengeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD351D4321AF95FE00B67054 /* TechChallengeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TechChallengeUITests.swift; sourceTree = "<group>"; };
 		BD351D4521AF95FE00B67054 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BD351D5821AF9AF500B67054 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; };
+		BD351D5821AF9AF500B67054 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		D5447A8A802E8CB6BC60BA43 /* Pods-TechChallengeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TechChallengeTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TechChallengeTests/Pods-TechChallengeTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -119,7 +117,6 @@
 				BD351D5821AF9AF500B67054 /* Podfile */,
 				BD351D2321AF95FD00B67054 /* AppDelegate.swift */,
 				BD351D2521AF95FD00B67054 /* ViewController.swift */,
-				BD351D2721AF95FD00B67054 /* Main.storyboard */,
 				BD351D2A21AF95FE00B67054 /* Assets.xcassets */,
 				BD351D2C21AF95FE00B67054 /* LaunchScreen.storyboard */,
 				BD351D2F21AF95FE00B67054 /* Info.plist */,
@@ -281,7 +278,6 @@
 				BD351D2E21AF95FE00B67054 /* LaunchScreen.storyboard in Resources */,
 				BD351D2B21AF95FE00B67054 /* Assets.xcassets in Resources */,
 				BD351D5921AF9AF500B67054 /* Podfile in Resources */,
-				BD351D2921AF95FD00B67054 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -478,14 +474,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		BD351D2721AF95FD00B67054 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				BD351D2821AF95FD00B67054 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		BD351D2C21AF95FE00B67054 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
