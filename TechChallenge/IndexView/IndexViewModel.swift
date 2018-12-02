@@ -23,9 +23,11 @@ public class IndexViewModel: TableViewModel {
   }
 
   public init() {
-    self.objects = []
+    self.objects = [TableViewLoadingCellViewModel()]
 
-    dataLoader().getDeliveries(offset: 0, limit: 10).observeOn(MainScheduler.instance)
+    dataLoader()
+      .getDeliveries(offset: 0, limit: 10)
+      .observeOn(MainScheduler.instance)
       .subscribe(onNext: { [weak self] deliveries in
         guard let strongSelf = self else { return }
         var newObjects: [TableViewCellViewModel] = []
@@ -33,6 +35,9 @@ public class IndexViewModel: TableViewModel {
           newObjects.append(DeliveryCellViewModel(delivery: delivery))
         }
         strongSelf.objects = newObjects
+      }, onError: { [weak self] (error) in
+        guard let strongSelf = self else { return }
+        strongSelf.objects = [TableViewErrorCellViewModel()]
       })
       .disposed(by: disposeBag)
   }

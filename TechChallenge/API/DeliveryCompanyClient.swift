@@ -40,8 +40,7 @@ public class DeliveryCompanyClient: APIClient {
           observer.onNext(deliveries)
           observer.onCompleted()
         } else if let error = response.error {
-          //TODO
-//          observer.onError(APIError)
+          observer.onError(APIError(error: error))
         }
       })
 

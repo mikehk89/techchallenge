@@ -19,6 +19,11 @@
 		BD52994F21AFACB80061B63B /* EnvironmentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD52994E21AFACB80061B63B /* EnvironmentManager.swift */; };
 		BD52995321AFD3020061B63B /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD52995221AFD3020061B63B /* TableViewCell.swift */; };
 		BD950CF621B3B0A800F9060C /* TableViewBinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD950CF521B3B0A800F9060C /* TableViewBinder.swift */; };
+		BD950CF821B3B12000F9060C /* TableViewLoadingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD950CF721B3B12000F9060C /* TableViewLoadingCell.swift */; };
+		BD950CFB21B3B16200F9060C /* TableViewLoadingCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD950CFA21B3B16200F9060C /* TableViewLoadingCellViewModel.swift */; };
+		BD950CFD21B3B32100F9060C /* TableViewErrorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD950CFC21B3B32100F9060C /* TableViewErrorCell.swift */; };
+		BD950CFF21B3B32F00F9060C /* TableViewErrorCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD950CFE21B3B32F00F9060C /* TableViewErrorCellViewModel.swift */; };
+		BD950D0121B3B63A00F9060C /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD950D0021B3B63A00F9060C /* APIError.swift */; };
 		BD9D126B21AF9CE80017B423 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = BD9D126A21AF9CE80017B423 /* .gitignore */; };
 		BD9D126D21AF9D0A0017B423 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9D126C21AF9D0A0017B423 /* DetailViewController.swift */; };
 		BD9D127021AF9DD20017B423 /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9D126F21AF9DD20017B423 /* TableView.swift */; };
@@ -76,6 +81,11 @@
 		BD52994E21AFACB80061B63B /* EnvironmentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentManager.swift; sourceTree = "<group>"; };
 		BD52995221AFD3020061B63B /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		BD950CF521B3B0A800F9060C /* TableViewBinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewBinder.swift; sourceTree = "<group>"; };
+		BD950CF721B3B12000F9060C /* TableViewLoadingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewLoadingCell.swift; sourceTree = "<group>"; };
+		BD950CFA21B3B16200F9060C /* TableViewLoadingCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewLoadingCellViewModel.swift; sourceTree = "<group>"; };
+		BD950CFC21B3B32100F9060C /* TableViewErrorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewErrorCell.swift; sourceTree = "<group>"; };
+		BD950CFE21B3B32F00F9060C /* TableViewErrorCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewErrorCellViewModel.swift; sourceTree = "<group>"; };
+		BD950D0021B3B63A00F9060C /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		BD9D126A21AF9CE80017B423 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = SOURCE_ROOT; };
 		BD9D126C21AF9D0A0017B423 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		BD9D126F21AF9DD20017B423 /* TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableView.swift; sourceTree = "<group>"; };
@@ -177,6 +187,21 @@
 			path = TechChallengeUITests;
 			sourceTree = "<group>";
 		};
+		BD950CF921B3B13E00F9060C /* TableView */ = {
+			isa = PBXGroup;
+			children = (
+				BD9D126F21AF9DD20017B423 /* TableView.swift */,
+				BD950CF521B3B0A800F9060C /* TableViewBinder.swift */,
+				BD52995221AFD3020061B63B /* TableViewCell.swift */,
+				BD9D127321AFA0020017B423 /* TableViewModel.swift */,
+				BD950CF721B3B12000F9060C /* TableViewLoadingCell.swift */,
+				BD950CFA21B3B16200F9060C /* TableViewLoadingCellViewModel.swift */,
+				BD950CFC21B3B32100F9060C /* TableViewErrorCell.swift */,
+				BD950CFE21B3B32F00F9060C /* TableViewErrorCellViewModel.swift */,
+			);
+			path = TableView;
+			sourceTree = "<group>";
+		};
 		BD9D126521AF9CAE0017B423 /* IndexView */ = {
 			isa = PBXGroup;
 			children = (
@@ -209,11 +234,8 @@
 		BD9D126E21AF9DB80017B423 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				BD52995221AFD3020061B63B /* TableViewCell.swift */,
-				BD9D126F21AF9DD20017B423 /* TableView.swift */,
-				BD9D127321AFA0020017B423 /* TableViewModel.swift */,
+				BD950CF921B3B13E00F9060C /* TableView */,
 				BD9D127B21AFA4770017B423 /*  Extensions */,
-				BD950CF521B3B0A800F9060C /* TableViewBinder.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -233,6 +255,7 @@
 				BD9D128821AFA81C0017B423 /* APIClientConfiguration.swift */,
 				BD9D128621AFA7BD0017B423 /* DeliveryCompanyClient.swift */,
 				BD52994E21AFACB80061B63B /* EnvironmentManager.swift */,
+				BD950D0021B3B63A00F9060C /* APIError.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -556,10 +579,15 @@
 				BD9D126D21AF9D0A0017B423 /* DetailViewController.swift in Sources */,
 				BD351D2621AF95FD00B67054 /* IndexViewController.swift in Sources */,
 				BD9D128721AFA7BD0017B423 /* DeliveryCompanyClient.swift in Sources */,
+				BD950CF821B3B12000F9060C /* TableViewLoadingCell.swift in Sources */,
+				BD950CFD21B3B32100F9060C /* TableViewErrorCell.swift in Sources */,
 				BD52994F21AFACB80061B63B /* EnvironmentManager.swift in Sources */,
+				BD950CFB21B3B16200F9060C /* TableViewLoadingCellViewModel.swift in Sources */,
 				BD351D2421AF95FD00B67054 /* AppDelegate.swift in Sources */,
 				BD9D127421AFA0020017B423 /* TableViewModel.swift in Sources */,
+				BD950CFF21B3B32F00F9060C /* TableViewErrorCellViewModel.swift in Sources */,
 				BD9D127221AF9EA90017B423 /* IndexView.swift in Sources */,
+				BD950D0121B3B63A00F9060C /* APIError.swift in Sources */,
 				BD9D128121AFA6A60017B423 /* Delivery.swift in Sources */,
 				BD9D127021AF9DD20017B423 /* TableView.swift in Sources */,
 				BD9D127A21AFA1730017B423 /* DeliveryCell.swift in Sources */,
