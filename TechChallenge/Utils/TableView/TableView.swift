@@ -71,6 +71,7 @@ public class TableView<ViewModel: TableViewModel>: UIView, UITableViewDataSource
       tableView.register(cvm.cellType, forCellReuseIdentifier: reuseId)
 
       if let tableViewCell = dequeue(tableView: tableView, indexPath: indexPath, cvm: cvm) {
+        tableViewCell.selectionStyle = .none
         cell = tableViewCell
       } else {
         fatalError("Failed to dequeue")
@@ -101,5 +102,9 @@ public class TableView<ViewModel: TableViewModel>: UIView, UITableViewDataSource
     }
 
     return cvm.calcHeight()
+  }
+
+  public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
   }
 }

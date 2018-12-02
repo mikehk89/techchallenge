@@ -25,6 +25,12 @@ public class DeliveryCompanyClient: APIClient {
 
   public let domain: URL
 
+  private lazy var networkSessionManager: Alamofire.SessionManager = {
+    let configuration = URLSessionConfiguration.default
+    configuration.requestCachePolicy = .reloadIgnoringCacheData
+    return Alamofire.SessionManager(configuration: configuration)
+  }()
+
   public required init(configuration: APIClientConfiguration) {
     self.domain = configuration.endpoint
   }
@@ -36,23 +42,26 @@ public class DeliveryCompanyClient: APIClient {
     let kEndpoint = "deliveries"
     let requestUrl = "\(self.domain.absoluteString)/\(kEndpoint)"
     let deliveryQuery = GetDeliveryQuery(url: requestUrl, params: [kOffsetKey: offset, kLimitKey: limit])
-    return fetch(query: deliveryQuery,
-                 transformer: { (dictArr) -> [Delivery] in
-                  var deliveries: [Delivery] = []
-                  for dict in dictArr {
-                    if let delivery = Delivery(dict: dict) {
-                      deliveries.append(delivery)
-                    }
-                  }
-                  return deliveries
-    })
+    let transformer: (([[String: Any]]) -> [Delivery]) = { dictArr -> [Delivery] in
+
+      var deliveries: [Delivery] = []
+      for dict in dictArr {
+        if let delivery = Delivery(dict: dict) {
+          deliveries.append(delivery)
+        }
+      }
+      return deliveries
+    }
+
+    return fetch(sessionManager: networkSessionManager, query: deliveryQuery, transformer: transformer)
   }
 
-  public func fetch<Query: APIQuery, ResultType>(query: Query,
+  public func fetch<Query: APIQuery, ResultType>(sessionManager: SessionManager,
+                                                 query: Query,
                                                  transformer: @escaping ([[String: Any]]) throws ->  [ResultType]) -> Observable<[ResultType]> {
-    return Observable<[ResultType]>.create({ observer -> Disposable in
-      let request = Alamofire.request(query.url, method: .get, parameters: query.params, encoding:  JSONEncoding.default)
 
+    return Observable<[ResultType]>.create({ observer -> Disposable in
+      let request = sessionManager.request(query.url, method: .get, parameters: query.params, encoding:  JSONEncoding.default)
       request.responseJSON(completionHandler: { response in
         if let dictArr = response.result.value as? [[String: Any]] {
           do {
@@ -60,10 +69,12 @@ public class DeliveryCompanyClient: APIClient {
             observer.onNext(result)
             observer.onCompleted()
           } catch {
-            observer.onError(ParsingError())
+            observer.onError(APIError.parsing)
           }
         } else if let error = response.error {
-          observer.onError(APIError(error: error))
+          observer.onError(APIError.fetchError(error))
+        } else {
+          observer.onError(APIError.unknown)
         }
       })
 

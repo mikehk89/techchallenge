@@ -10,7 +10,7 @@ import UIKit
 
 public class IndexViewController: UIViewController {
 
-  public  var indexView: IndexView {
+  public var indexView: IndexView {
     return self.view as! IndexView
   }
 
@@ -18,4 +18,3 @@ public class IndexViewController: UIViewController {
     self.view = IndexView()
   }
 }
-

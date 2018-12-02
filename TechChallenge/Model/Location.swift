@@ -15,7 +15,7 @@ public struct Location {
 
   init(dict: [String: Any]) {
     self.lat = dict["lat"] as? Double
-    self.long = dict["long"] as? Double
+    self.long = dict["lng"] as? Double
     self.address = dict["address"] as? String
   }
 }

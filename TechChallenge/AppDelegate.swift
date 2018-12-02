@@ -16,10 +16,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     // Override point for customization after application launch.
-    window = UIWindow(frame: UIScreen.main.bounds)
+    window = coordinator.window
     window?.makeKeyAndVisible()
 
-    window?.rootViewController = IndexViewController()
+    coordinator.transitTo(screen: .list,
+                          transition: .root)
 
     return true
   }

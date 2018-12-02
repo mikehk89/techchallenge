@@ -25,4 +25,13 @@ public class IndexView: TableView<IndexViewModel> {
   public required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
+
+  public override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    if let deliveryCVM = viewModel?.objects[safe: indexPath.row] as? DeliveryCellViewModel,
+      let location = deliveryCVM.delivery.location {
+      let detailViewModel = DetailViewModel(location: location)
+      coordinator.transitTo(screen: .detail(detailViewModel), transition: .modal)
+    }
+
+  }
 }

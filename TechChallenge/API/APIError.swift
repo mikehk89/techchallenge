@@ -8,11 +8,10 @@
 
 import Foundation
 
-struct APIError: Error {
-
-  init(error: Error) {
-    /*TODO: Feel free to extend by using the data from the Error type to create our own error type */
-  }
+enum APIError: Error {
+  case fetchError(Error)
+  case parsing
+  case unknown
 }
 
 struct NoNetworkError: Error {}

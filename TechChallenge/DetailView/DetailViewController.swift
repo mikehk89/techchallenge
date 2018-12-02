@@ -9,6 +9,13 @@
 import Foundation
 import UIKit
 
-class DetailViewController: UIViewController {
+public class DetailViewController: UIViewController {
 
+  public var detailView: DetailView {
+    return self.view as! DetailView
+  }
+  
+  public override func loadView() {
+    self.view = DetailView()
+  }
 }
