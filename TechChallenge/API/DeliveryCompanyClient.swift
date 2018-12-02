@@ -61,25 +61,38 @@ public class DeliveryCompanyClient: APIClient {
                                                  transformer: @escaping ([[String: Any]]) throws ->  [ResultType]) -> Observable<[ResultType]> {
 
     return Observable<[ResultType]>.create({ observer -> Disposable in
-      let request = sessionManager.request(query.url, method: .get, parameters: query.params, encoding:  JSONEncoding.default)
-      request.responseJSON(completionHandler: { response in
-        if let dictArr = response.result.value as? [[String: Any]] {
-          do {
-            let result = try transformer(dictArr)
-            observer.onNext(result)
-            observer.onCompleted()
-          } catch {
-            observer.onError(APIError.parsing)
-          }
-        } else if let error = response.error {
-          observer.onError(APIError.fetchError(error))
-        } else {
-          observer.onError(APIError.unknown)
-        }
-      })
+      let disposable: Cancelable
+      if NetworkReachabilityManager()?.isReachable ?? false {
+        let request
+          = sessionManager.request(query.url,
+                                   method: .get,
+                                   parameters: query.params)
 
-      let disposable = Disposables.create {
-        request.cancel()
+        request.responseJSON(completionHandler: { response in
+          if let dictArr = response.result.value as? [[String: Any]] {
+            do {
+              let result = try transformer(dictArr)
+              observer.onNext(result)
+              observer.onCompleted()
+            } catch {
+              print("[APIError-Parsing]")
+              observer.onError(APIError.parsing)
+            }
+          } else if let error = response.error {
+            print("[APIError-fetch] \(error.localizedDescription)")
+            observer.onError(APIError.fetchError(error))
+          } else {
+            print("[APIError-unknown]")
+            observer.onError(APIError.unknown)
+          }
+        })
+
+        disposable = Disposables.create {
+          request.cancel()
+        }
+      } else {
+        disposable = Disposables.create {}
+        observer.onError(NoNetworkError())
       }
 
       return disposable

@@ -105,6 +105,9 @@ public class TableView<ViewModel: TableViewModel>: UIView, UITableViewDataSource
   }
 
   public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+  }
 
+  public func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+    print("TODO")
   }
 }

@@ -16,6 +16,7 @@ public class TableViewErrorCell: TableViewCell<TableViewErrorCellViewModel> {
   }
   public lazy var errorLabel: UILabel = {
     let errorLabel = UILabel()
+    errorLabel.textAlignment = .center
     errorLabel.textColor = .red
     errorLabel.numberOfLines = 1
     return errorLabel
@@ -32,5 +33,9 @@ public class TableViewErrorCell: TableViewCell<TableViewErrorCellViewModel> {
 
     errorLabel.frame = CGRect(x: Dimensions.kLRMargin, y: contentView.bounds.midY - errorLabel.bounds.size.height * 0.5, width: contentView.bounds.size.width - 2 * Dimensions.kLRMargin,
                               height: errorLabelSize.height)
+  }
+
+  public override func didUpdate(viewModel: TableViewErrorCellViewModel?) {
+    errorLabel.text = viewModel?.errorText
   }
 }

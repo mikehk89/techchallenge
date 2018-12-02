@@ -30,4 +30,9 @@ public class TableViewLoadingCell: TableViewCell<TableViewLoadingCellViewModel> 
                width: loadingIndicator.bounds.size.width,
                height: loadingIndicator.bounds.size.height)
   }
+
+  public override func prepareForReuse() {
+    super.prepareForReuse()
+    loadingIndicator.startAnimating()
+  } 
 }

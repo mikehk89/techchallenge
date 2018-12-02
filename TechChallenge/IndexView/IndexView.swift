@@ -32,6 +32,18 @@ public class IndexView: TableView<IndexViewModel> {
       let detailViewModel = DetailViewModel(location: location)
       coordinator.transitTo(screen: .detail(detailViewModel), transition: .modal)
     }
+  }
 
+  public override func tableView(_ tableView: UITableView,
+                        willDisplay cell: UITableViewCell,
+                        forRowAt indexPath: IndexPath) {
+    guard tableView.numberOfRows(inSection: indexPath.section) > 1 else { return }
+    let numberOfRows = tableView.numberOfRows(inSection: indexPath.section)
+
+    //Paginate at 80%
+    let scrollPercent = CGFloat(indexPath.row + 1) / CGFloat(numberOfRows)
+    if scrollPercent > 0.9 && (viewModel?.gettingNext ?? true) == false {
+      viewModel?.appendDeliveries(offset: numberOfRows, limit: 20)
+    }
   }
 }

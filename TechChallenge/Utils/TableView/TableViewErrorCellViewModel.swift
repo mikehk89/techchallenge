@@ -18,6 +18,14 @@ public class TableViewErrorCellViewModel: TableViewCellViewModel {
     return TableViewErrorCell.self
   }
 
+  let error: AppError
+  let errorText: String
+
+  init(error: AppError) {
+    self.error = error
+    errorText = error.uiDisplayText
+  }
+
   public func calcHeight() -> CGFloat {
     return 50
   }

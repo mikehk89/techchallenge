@@ -8,11 +8,29 @@
 
 import Foundation
 
-enum APIError: Error {
+public protocol AppError {
+  var uiDisplayText: String { get }
+}
+
+enum APIError: Error, AppError {
   case fetchError(Error)
   case parsing
   case unknown
+
+  var uiDisplayText: String {
+    switch self {
+    case .fetchError:
+      return "A server error occured"
+    case .parsing:
+      return "An app error occured"
+    case .unknown:
+      return "An unknown error occured"
+    }
+  }
 }
 
-struct NoNetworkError: Error {}
-struct ParsingError: Error {}
+struct NoNetworkError: Error, AppError {
+  var uiDisplayText: String {
+    return "Please reconnect to the internet"
+  }
+}
