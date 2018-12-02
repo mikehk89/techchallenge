@@ -16,3 +16,4 @@ struct APIError: Error {
 }
 
 struct NoNetworkError: Error {}
+struct ParsingError: Error {}
