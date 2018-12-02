@@ -70,11 +70,8 @@ public class TableView<ViewModel: TableViewModel>: UIView, UITableViewDataSource
       let reuseId = cvm.reuseIdentifier
       tableView.register(cvm.cellType, forCellReuseIdentifier: reuseId)
 
-      //TODO: remove the hard
-      if let testcell = tableView.dequeueReusableCell(withIdentifier: reuseId, for: indexPath) as? DeliveryCell,
-        let dcvm = cvm as? DeliveryCellViewModel {
-        testcell.didUpdate(viewModel: dcvm)
-        cell = testcell
+      if let tableViewCell = dequeue(tableView: tableView, indexPath: indexPath, cvm: cvm) {
+        cell = tableViewCell
       } else {
         fatalError("Failed to dequeue")
       }
@@ -85,6 +82,17 @@ public class TableView<ViewModel: TableViewModel>: UIView, UITableViewDataSource
     return cell
   }
 
+  private func dequeue(tableView: UITableView,
+                       indexPath: IndexPath,
+                       cvm: TableViewCellViewModel)
+    -> UITableViewCell? {
+
+      /*NOTE: To avoid `over-engeering` as the project spec states and considering the use case for this task is quite simple and only has one cell type... just use a basic switch. If you add more cellvm/cell types, add to this switch to dequeue successfully.
+
+       Personally, I would recommend something liek IGListKit or your own binding class to help with the binding in a more complex app. */
+
+      return cvm.dequeueAndBind(tableView: tableView, indexPath: indexPath)
+  }
   // MARK: TableViewDelegate
 
   public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -92,6 +100,6 @@ public class TableView<ViewModel: TableViewModel>: UIView, UITableViewDataSource
       return 0
     }
 
-    return cvm.height
+    return cvm.calcHeight()
   }
 }

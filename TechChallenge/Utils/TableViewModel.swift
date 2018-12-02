@@ -13,8 +13,11 @@ public protocol TableViewModel {
   var objects: [TableViewCellViewModel] { get }
 }
 
-public protocol TableViewCellViewModel {
-  var height: CGFloat { get }
+public protocol TableViewCellViewModel { 
+
   var reuseIdentifier: String { get }
   var cellType: UITableViewCell.Type { get }
+
+  func calcHeight() -> CGFloat
+  func dequeueAndBind(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell?
 }

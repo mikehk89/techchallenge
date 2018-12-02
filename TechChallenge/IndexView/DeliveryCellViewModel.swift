@@ -11,13 +11,27 @@ import UIKit
 
 public class DeliveryCellViewModel: TableViewCellViewModel {
 
-  public var cellType: UITableViewCell.Type = DeliveryCell.self
-  public let height: CGFloat = 50
-  public let reuseIdentifier: String = "DeliveryCell"
+  public var cellType: UITableViewCell.Type {
+    return DeliveryCell.self
+  }
+
+  public var reuseIdentifier: String {
+    return "DeliveryCell"
+  }
 
   public let delivery: Delivery
 
   init(delivery: Delivery) {
     self.delivery = delivery
+  }
+
+  public func calcHeight() -> CGFloat {
+    return 50
+  }
+
+  public func dequeueAndBind(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell? {
+
+    let binder = TableViewBinder<DeliveryCellViewModel, DeliveryCell>(viewModel: self, tableView: tableView, indexPath: indexPath)
+    return binder.dequeueAndBind()
   }
 }
