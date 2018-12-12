@@ -25,30 +25,30 @@ public class DeliveryCell: TableViewCell<DeliveryCellViewModel> {
     return descriptionLabel
   }()
 
-  public lazy override var imageView: UIImageView = {
+  public lazy var deliveryImageView: UIImageView = {
     return UIImageView()
   }()
 
   public override func setup() {
     super.setup()
     contentView.addSubview(descriptionLabel)
-    contentView.addSubview(imageView)
+    contentView.addSubview(deliveryImageView)
   }
 
   public override func didUpdate(viewModel: DeliveryCellViewModel?) {
     descriptionLabel.text = viewModel?.delivery.description
     if let urlStr = viewModel?.delivery.imageUrl,
       let url = URL(string: urlStr) {
-      imageView.kf.setImage(with: url)
+      deliveryImageView.kf.setImage(with: url)
     } else {
-      imageView.kf.setImage(with: nil)
+      deliveryImageView.kf.setImage(with: nil)
     }
   }
 
   public override func layoutSubviews() {
     super.layoutSubviews()
 
-    imageView.frame
+    deliveryImageView.frame
       = CGRect(x: contentView.bounds.size.width
         - Dimensions.kLeftRightMargin
         - Dimensions.kImageViewSize.width,
@@ -56,7 +56,7 @@ public class DeliveryCell: TableViewCell<DeliveryCellViewModel> {
                width: Dimensions.kImageViewSize.width,
                height: Dimensions.kImageViewSize.height)
 
-    let maxDescriptionWidth = imageView.frame.minX - Dimensions.kImageViewLeft
+    let maxDescriptionWidth = deliveryImageView.frame.minX - Dimensions.kImageViewLeft
     let descriptionLabelSize = descriptionLabel.sizeThatFits(CGSize(width: maxDescriptionWidth, height: CGFloat.infinity))
 
     descriptionLabel.frame
