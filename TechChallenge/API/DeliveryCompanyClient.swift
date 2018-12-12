@@ -25,6 +25,12 @@ public class DeliveryCompanyClient: APIClient {
 
   public let domain: URL
 
+  private lazy var cacheSessionManager: Alamofire.SessionManager = {
+    let configuration = URLSessionConfiguration.default
+    configuration.requestCachePolicy = .returnCacheDataDontLoad
+    return Alamofire.SessionManager(configuration: configuration)
+  }()
+
   private lazy var networkSessionManager: Alamofire.SessionManager = {
     let configuration = URLSessionConfiguration.default
     configuration.requestCachePolicy = .reloadIgnoringCacheData
@@ -53,7 +59,19 @@ public class DeliveryCompanyClient: APIClient {
       return deliveries
     }
 
-    return fetch(sessionManager: networkSessionManager, query: deliveryQuery, transformer: transformer)
+    let cacheData = fetch(sessionManager: cacheSessionManager, query: deliveryQuery, transformer: transformer)
+
+    //Network session manager will fallback on the cache SM when there is an error
+    let networkData = fetch(sessionManager: networkSessionManager, query: deliveryQuery, transformer: transformer)
+      .catchError { error -> Observable<[Delivery]> in
+        return cacheData
+    }
+
+    if NetworkReachabilityManager()?.isReachable ?? false {
+      return networkData
+    } else {
+      return cacheData
+    }
   }
 
   public func fetch<Query: APIQuery, ResultType>(sessionManager: SessionManager,
@@ -61,40 +79,31 @@ public class DeliveryCompanyClient: APIClient {
                                                  transformer: @escaping ([[String: Any]]) throws ->  [ResultType]) -> Observable<[ResultType]> {
 
     return Observable<[ResultType]>.create({ observer -> Disposable in
-      let disposable: Cancelable
-      if NetworkReachabilityManager()?.isReachable ?? false {
-        let request
-          = sessionManager.request(query.url,
-                                   method: .get,
-                                   parameters: query.params)
-
-        request.responseJSON(completionHandler: { response in
-          if let dictArr = response.result.value as? [[String: Any]] {
-            do {
-              let result = try transformer(dictArr)
-              observer.onNext(result)
-              observer.onCompleted()
-            } catch {
-              print("[APIError-Parsing]")
-              observer.onError(APIError.parsing)
-            }
-          } else if let error = response.error {
-            print("[APIError-fetch] \(error.localizedDescription)")
-            observer.onError(APIError.fetchError(error))
-          } else {
-            print("[APIError-unknown]")
-            observer.onError(APIError.unknown)
+      let request
+        = sessionManager.request(query.url,
+                                 method: .get,
+                                 parameters: query.params)
+      request.responseJSON(completionHandler: { response in
+        if let dictArr = response.result.value as? [[String: Any]] {
+          do {
+            let result = try transformer(dictArr)
+            observer.onNext(result)
+            observer.onCompleted()
+          } catch {
+            print("[APIError-Parsing]")
+            observer.onError(APIError.parsing)
           }
-        })
-
-        disposable = Disposables.create {
-          request.cancel()
+        } else if let error = response.error {
+          print("[APIError-fetch] \(error.localizedDescription)")
+          observer.onError(APIError.fetchError(error))
+        } else {
+          print("[APIError-unknown]")
+          observer.onError(APIError.unknown)
         }
-      } else {
-        disposable = Disposables.create {}
-        observer.onError(NoNetworkError())
+      })
+      let disposable = Disposables.create {
+        request.cancel()
       }
-
       return disposable
     })
   }

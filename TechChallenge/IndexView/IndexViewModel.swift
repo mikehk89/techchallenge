@@ -46,7 +46,7 @@ public class IndexViewModel: TableViewModel {
   private func getDeliveries(offset: Int,
                              limit: Int) -> Observable<[Delivery]> {
     return dataLoader()
-      .getDeliveries(offset: 0, limit: limit)
+      .getDeliveries(offset: offset, limit: limit)
       .observeOn(MainScheduler.instance)
   }
 
