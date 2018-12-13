@@ -37,11 +37,12 @@ public class DeliveryCell: TableViewCell<DeliveryCellViewModel> {
 
   public override func didUpdate(viewModel: DeliveryCellViewModel?) {
     descriptionLabel.text = viewModel?.delivery.description
-    if let urlStr = viewModel?.delivery.imageUrl,
+    if let urlStr =
+      viewModel?.delivery.imageUrl,
       let url = URL(string: urlStr) {
       deliveryImageView.kf.setImage(with: url)
     } else {
-      deliveryImageView.kf.setImage(with: nil)
+      deliveryImageView.image = nil
     }
   }
 
